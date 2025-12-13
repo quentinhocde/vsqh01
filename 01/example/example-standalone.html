@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VSQH01_1 Slider - Standalone Example</title>
+    <style>
+      /* Basic reset - you might already have this on your site */
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        min-height: 100vh;
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 
+      ============================================
+      VSQH01_1 SLIDER - HTML STRUCTURE
+      ============================================
+      Copy this entire section to your page.
+      Replace the images and titles with your own content.
+      Minimum 5 slides required, must be duplicated for seamless loop.
+    -->
+    <section class="vsqh01-1-slider_wrap">
+      <div class="vsqh01-1-slider">
+        <!-- Slider Images (minimum 5 required, duplicated) -->
+        <ul class="vsqh01-1-slider_list">
+          <li
+            style="
+              background-image: url('https://picsum.photos/id/1015/800/1200');
+            "></li>
+          <li
+            style="
+              background-image: url('https://picsum.photos/id/1016/800/1200');
+            "></li>
+          <li
+            style="
+              background-image: url('https://picsum.photos/id/1018/800/1200');
+            "></li>
+          <li
+            style="
+              background-image: url('https://picsum.photos/id/1019/800/1200');
+            "></li>
+          <li
+            style="
+              background-image: url('https://picsum.photos/id/1020/800/1200');
+            "></li>
+          <!-- Duplicate for seamless loop -->
+          <li
+            style="
+              background-image: url('https://picsum.photos/id/1015/800/1200');
+            "></li>
+          <li
+            style="
+              background-image: url('https://picsum.photos/id/1016/800/1200');
+            "></li>
+          <li
+            style="
+              background-image: url('https://picsum.photos/id/1018/800/1200');
+            "></li>
+          <li
+            style="
+              background-image: url('https://picsum.photos/id/1019/800/1200');
+            "></li>
+          <li
+            style="
+              background-image: url('https://picsum.photos/id/1020/800/1200');
+            "></li>
+        </ul>
+
+        <!-- Navigation Buttons (optional - hidden by default) -->
+        <div class="vsqh01-1-actions">
+          <button class="prev">Prev</button>
+          <button class="next">Next</button>
+        </div>
+
+        <!-- Slider Titles (duplicated like images) -->
+        <ul class="vsqh01-1-slider_content">
+          <li>Mountain Vista</li>
+          <li>Ocean Breeze</li>
+          <li>Forest Path</li>
+          <li>Desert Sun</li>
+          <li>City Lights</li>
+          <!-- Duplicate for seamless loop -->
+          <li>Mountain Vista</li>
+          <li>Ocean Breeze</li>
+          <li>Forest Path</li>
+          <li>Desert Sun</li>
+          <li>City Lights</li>
+        </ul>
+      </div>
+
+      <!-- Drag proxy (auto-created if missing, but you can include it) -->
+      <div class="vsqh01-1-drag-proxy"></div>
+    </section>
+    <!-- END VSQH01_1 SLIDER -->
+
+    <!-- 
+      ============================================
+      SCRIPTS
+      ============================================
+      1. Load GSAP and plugins from CDN
+      2. Load VSQH01_1 module
+      The module auto-initializes on page load!
+    -->
+
+    <!-- GSAP Core -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+
+    <!-- GSAP Plugins -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/Draggable.min.js"></script>
+
+    <!-- SplitText (Club GSAP plugin - requires license for production) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js"></script>
+
+    <!-- VSQH01_1 Module -->
+    <!-- Option 1: From local file after build -->
+    <script src="../dist/vsqh01-1.min.js"></script>
+
+    <!-- Option 2: From your CDN (replace with your URL) -->
+    <!-- <script src="https://your-cdn.com/vsqh01-1.min.js"></script> -->
+  </body>
+</html>
