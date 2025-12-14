@@ -1,6 +1,22 @@
 # VSQH01_1 - Infinite 3D Slider
 
-A 3D slider component using GSAP.
+A 3D infinite slider component using GSAP.
+
+## 📖 How It Works
+
+This effect is designed as a **standalone module** for easy integration:
+
+1. **Import the dependencies** — GSAP and its plugins
+2. **Import the minified script** — `vsqh01-1.min.js`
+3. **Add the HTML structure** — That's it!
+
+> 💡 **CSS is automatically injected** by the script, no need to import a separate stylesheet.
+
+### 🎯 Want More Flexibility?
+
+If you're comfortable with code and want a custom integration, check out the `/example` folder. It contains the full source files you can adapt to your specific needs.
+
+---
 
 ## 🚀 Quick Integration
 
@@ -30,17 +46,27 @@ A 3D slider component using GSAP.
   <div class="vsqh01-1-slider">
     <!-- Slider Images (minimum 5 slides, must be duplicated) -->
     <ul class="vsqh01-1-slider_list">
-      <li style="background-image: url('image1.jpg')"></li>
-      <li style="background-image: url('image2.jpg')"></li>
-      <li style="background-image: url('image3.jpg')"></li>
-      <li style="background-image: url('image4.jpg')"></li>
-      <li style="background-image: url('image5.jpg')"></li>
+      <li
+        style="background-image: url('https://picsum.photos/id/1067/800/1200')"></li>
+      <li
+        style="background-image: url('https://picsum.photos/id/1062/800/1200')"></li>
+      <li
+        style="background-image: url('https://picsum.photos/id/164/800/1200')"></li>
+      <li
+        style="background-image: url('https://picsum.photos/id/429/800/1200')"></li>
+      <li
+        style="background-image: url('https://picsum.photos/id/1042/800/1200')"></li>
       <!-- Duplicate your slides for seamless loop -->
-      <li style="background-image: url('image1.jpg')"></li>
-      <li style="background-image: url('image2.jpg')"></li>
-      <li style="background-image: url('image3.jpg')"></li>
-      <li style="background-image: url('image4.jpg')"></li>
-      <li style="background-image: url('image5.jpg')"></li>
+      <li
+        style="background-image: url('https://picsum.photos/id/1067/800/1200')"></li>
+      <li
+        style="background-image: url('https://picsum.photos/id/1062/800/1200')"></li>
+      <li
+        style="background-image: url('https://picsum.photos/id/164/800/1200')"></li>
+      <li
+        style="background-image: url('https://picsum.photos/id/429/800/1200')"></li>
+      <li
+        style="background-image: url('https://picsum.photos/id/1042/800/1200')"></li>
     </ul>
 
     <!-- Navigation Buttons (optional, hidden by default) -->
@@ -51,17 +77,17 @@ A 3D slider component using GSAP.
 
     <!-- Titles (must be duplicated like images) -->
     <ul class="vsqh01-1-slider_content">
-      <li>Title 1</li>
-      <li>Title 2</li>
-      <li>Title 3</li>
-      <li>Title 4</li>
-      <li>Title 5</li>
+      <li>Brutalist Tower</li>
+      <li>Spiral Stairs</li>
+      <li>Concrete Pillars</li>
+      <li>Sacred Dome</li>
+      <li>Grid Windows</li>
       <!-- Duplicate your titles -->
-      <li>Title 1</li>
-      <li>Title 2</li>
-      <li>Title 3</li>
-      <li>Title 4</li>
-      <li>Title 5</li>
+      <li>Brutalist Tower</li>
+      <li>Spiral Stairs</li>
+      <li>Concrete Pillars</li>
+      <li>Sacred Dome</li>
+      <li>Grid Windows</li>
     </ul>
   </div>
 
@@ -149,28 +175,11 @@ slider.destroy(); // Destroy the slider
 
 ---
 
-## 🔧 Build
-
-```bash
-# Non-minified build (for debugging)
-npm run build
-
-# Minified build (for production)
-npm run build:minified
-```
-
-The file will be generated in `dist/vsqh01-1.min.js`.
-
----
-
 ## 📝 Important Notes
 
-1. **SplitText** is a Club GSAP plugin (requires license for production use)
-2. **Minimum 5 slides** required for the seamless loop to work properly
-3. Images AND titles must be **duplicated** for seamless looping
-4. CSS is automatically injected by the script
-5. The slider uses scroll for navigation (infinite scroll)
-6. Drag also works (horizontal drag)
+1. **Minimum 5 slides** required for the seamless loop to work properly
+2. Images AND titles must be **duplicated** for seamless looping
+3. CSS is automatically injected by the script
 
 ---
 
