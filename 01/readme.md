@@ -1,20 +1,31 @@
 # VSQH01_1 - Infinite 3D Slider
 
-A 3D infinite slider component using GSAP.
+A 3D infinite slider component using GSAP. Made with ❤️ by Quentin Hocdé for VSGOODS.
 
-## 📖 How It Works
+## 📖 Two Ways to Use This Effect
 
-This effect is designed as a **standalone module** for easy integration:
+### Option 1: Custom Integration
 
-1. **Import the dependencies** — GSAP and its plugins
-2. **Import the minified script** — `vsqh01-1.min.js`
-3. **Add the HTML structure** — That's it!
+If you're comfortable with code and want full control:
 
-> 💡 **CSS is automatically injected** by the script, no need to import a separate stylesheet.
+- Check out the **`/example`** folder
+- It contains all the source files (`script.js`, `vsqh.css`, `utils/`)
+- Copy and adapt them to fit your project's architecture
 
-### 🎯 Want More Flexibility?
+This option gives you more flexibility to customize animations, styles, and behavior.
 
-If you're comfortable with code and want a custom integration, check out the `/example` folder. It contains the full source files you can adapt to your specific needs.
+### Option 2: As a Module
+
+The simplest way to integrate this effect:
+
+1. Import the **GSAP dependencies** (from CDN)
+2. Import the **minified script** (`vsqh01-1.min.js`)
+3. Add the **HTML structure**
+4. Done! ✨
+
+> 💡 **CSS is automatically injected** by the script — no separate stylesheet needed.
+
+→ Follow the [Quick Integration](#-quick-integration) guide below.
 
 ---
 
@@ -139,39 +150,6 @@ Section (class: vsqh01-1-slider_wrap)
 ### Step 3: Publish
 
 That's all! The slider will work automatically.
-
----
-
-## ⚙️ Configuration Options
-
-You can manually initialize with custom options:
-
-```javascript
-document.addEventListener('DOMContentLoaded', function () {
-  const wrapper = document.querySelector('.vsqh01-1-slider_wrap');
-  const slider = new VSQH01_1.Slider(wrapper, {
-    spacing: 0.18, // Spacing between items (default: 0.18)
-    scrubDuration: 0.4, // Smooth scrolling duration (default: 0.4)
-    scrubEase: 'power3', // Easing curve (default: 'power3')
-  });
-});
-```
-
----
-
-## 🎮 Public API
-
-```javascript
-// Get the instance
-const slider = document.querySelector('.vsqh01-1-slider_wrap')._vsqh01-1Instance;
-
-// Navigate
-slider.next(); // Next slide
-slider.prev(); // Previous slide
-
-// Cleanup
-slider.destroy(); // Destroy the slider
-```
 
 ---
 
