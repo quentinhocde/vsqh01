@@ -17,7 +17,7 @@ A 3D slider component using GSAP.
 
 ```html
 <!-- From a CDN (replace with your URL) -->
-<script src="https://your-cdn.com/vsqh01-1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01/01/dist/vsqh01-1.min.js"></script>
 
 <!-- Or locally -->
 <script src="dist/vsqh01-1.min.js"></script>
