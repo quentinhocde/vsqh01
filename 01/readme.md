@@ -4,7 +4,7 @@ A 3D infinite slider component using GSAP. Made with ❤️ by Quentin Hocdé fo
 
 ## 📖 Two Ways to Use This Effect
 
-### Option 1: Custom Integration
+### Option 1: Custom Integration (Advanced)
 
 If you're comfortable with code and want full control:
 

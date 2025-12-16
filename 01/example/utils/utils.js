@@ -49,10 +49,11 @@ function buildSeamlessLoop(items, spacing, animateFunc) {
 
 // Convert a progress value (0-1) to an actual scroll position
 function progressToScroll(progress) {
+  let scrollRange = trigger.end - trigger.start;
   return gsap.utils.clamp(
-    1,
+    trigger.start + 1,
     trigger.end - 1,
-    gsap.utils.wrap(0, 1, progress) * trigger.end,
+    trigger.start + gsap.utils.wrap(0, 1, progress) * scrollRange,
   );
 }
 

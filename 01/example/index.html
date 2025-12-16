@@ -3,13 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VSGOODS - 01 - Quentin Hocdé</title>
+    <title>Example 1 - VSGOODS01 - Quentin Hocdé</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet" />
+
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="vsqh.css" />
   </head>
   <body>
-    <section class="vsqh01-1-slider_wrap">
-      <div class="vsqh01-1-slider">
+    <!-- <section
+      style="
+        height: 100vh;
+        background: #222;
+        display: grid;
+        place-items: center;
+        color: white;
+      ">
+      <h1>Section avant</h1>
+    </section>
+     -->
+    <vsqh01-1-slider
+      data-scrollable="false"
+      data-draggable="false"
+      class="vsqh01-1-slider">
+      <div class="vsqh01-1-slider_track">
         <ul class="vsqh01-1-slider_list">
           <!-- Minimum 5 slides required -->
           <li style="background-image: url(images/01.jpg)"></li>
@@ -47,7 +68,18 @@
       </div>
 
       <div class="vsqh01-1-drag-proxy"></div>
-    </section>
+    </vsqh01-1-slider>
+
+    <!-- <section
+      style="
+        height: 100vh;
+        background: #222;
+        display: grid;
+        place-items: center;
+        color: white;
+      ">
+      <h1>Section après</h1>
+    </section> -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/Draggable.min.js"></script>

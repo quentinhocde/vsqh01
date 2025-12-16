@@ -3,21 +3,12 @@ gsap.registerPlugin(ScrollTrigger, Draggable);
 let iteration = 0;
 
 const spacing = 0.18,
+  sliderTrack = document.querySelector('.vsqh01-1-slider_track'),
+  slider = document.querySelector('.vsqh01-1-slider'),
   snapTime = gsap.utils.snap(spacing),
   items = gsap.utils.toArray('.vsqh01-1-slider_list li'),
   titles = gsap.utils.toArray('.vsqh01-1-slider_content li'),
-  itemWidth = items[0].offsetWidth,
   titleHeight = titles[0].offsetHeight;
-
-const splitLines = Array.from(titles).map(
-  (line) => new SplitText(line, { type: 'chars' }),
-);
-
-splitLines.forEach((split, index) => {
-  gsap.set(split.chars, {
-    rotationX: 90,
-  });
-});
 
 // Animation function for each item
 // Each animation duration is 1 second, and start at 0
@@ -42,15 +33,17 @@ function animateFunc(element, index) {
   const rotationTL = gsap.timeline();
   rotationTL
     .set(element, {
-      rotateY: -85,
+      rotateY: -90,
     })
     .to(element, {
       rotateY: 0,
+      '--relativeProgress': 1,
       duration: 0.5,
       ease: 'power1.in',
     })
     .to(element, {
       rotateY: -70,
+      '--relativeProgress': 0,
       duration: 0.5,
       ease: 'power1.out',
     });
@@ -58,33 +51,30 @@ function animateFunc(element, index) {
   tl.add(rotationTL, 0);
 
   // Animation 2
-  // Different animation for the z axis, blur and opacity, to simulate the circle effect
+  // Different animation for the z axis, to simulate the circle effect
   const circleMovementTL = gsap.timeline();
   circleMovementTL
     .set(element, {
-      z: itemWidth * 4,
-      filter: 'blur(8px)',
-      opacity: 0,
+      z: '100vw',
+      zIndex: 100,
     })
     .to(
       element,
       {
         z: 0,
-        filter: 'blur(0px)',
-        opacity: 1,
+        zIndex: 0,
         duration: 0.5,
-        ease: 'power1.out',
+        ease: 'power2.out',
       },
       0,
     )
     .to(
       element,
       {
-        z: -itemWidth * 4,
-        filter: 'blur(8px)',
-        opacity: 0,
+        z: '-50vw',
+        zIndex: -50,
         duration: 0.5,
-        ease: 'power1.in',
+        ease: 'power2.in',
       },
       0.5,
     );
@@ -92,17 +82,20 @@ function animateFunc(element, index) {
   tl.add(circleMovementTL, 0);
 
   const titleTl = gsap.timeline();
-  titleTl.fromTo(
-    splitLines[index].chars,
-    { rotationX: 90 },
-    {
+  titleTl
+    .set(titles[index], {
       rotationX: -90,
-      duration: 0.3,
-      ease: 'none',
-      transformOrigin: `center center ${titleHeight / 3}px`,
-    },
-    0.35,
-  );
+      transformOrigin: `center center ${-titleHeight / 3}px`,
+    })
+    .to(
+      titles[index],
+      {
+        rotationX: 90,
+        duration: 0.3,
+        ease: 'none',
+      },
+      0.35,
+    );
 
   tl.add(titleTl, 0);
 
@@ -126,28 +119,47 @@ const scrub = gsap.to(playhead, {
   paused: true, // Starts paused, manually restarted via scrub.invalidate().restart()
 });
 
+let isInit = false;
+
 const trigger = ScrollTrigger.create({
-  start: 0,
+  trigger: sliderTrack,
+  start: 'top top',
   // Infinite scroll loop: teleport to opposite edge when reaching boundaries
   onUpdate(self) {
-    let scroll = self.scroll();
-    if (scroll > self.end - 1) {
-      shiftScrollIteration(1, 1);
+    if (!isInit) {
+      initCallback();
+      return;
+    }
+    // Calculate scroll relative to the trigger start position
+    let scroll = self.scroll() - self.start;
+    let scrollRange = self.end - self.start;
+    if (scroll > scrollRange - 1) {
+      shiftScrollIteration(1, self.start + 1);
     } else if (scroll < 1 && self.direction < 0) {
-      shiftScrollIteration(-1, self.end - 2);
+      shiftScrollIteration(-1, self.start + scrollRange - 2);
     } else {
       scrub.vars.offset = (iteration + self.progress) * seamlessLoop.duration();
       scrub.invalidate().restart();
     }
   },
   end: `+=${items.length * 1000}`,
-  pin: '.vsqh01-1-slider',
+  pin: slider,
 });
 
 // Snap to closest item when scrolling ends
-ScrollTrigger.addEventListener('scrollEnd', () =>
-  scrollToOffset(scrub.vars.offset),
-);
+ScrollTrigger.addEventListener('scrollEnd', () => {
+  if (isInit) {
+    scrollToOffset(scrub.vars.offset);
+  }
+});
+
+function initCallback() {
+  isInit = true;
+
+  gsap.delayedCall(0.3, () => {
+    slider.classList.add('is-init');
+  });
+}
 
 // Navigation buttons
 document
@@ -169,7 +181,7 @@ document.addEventListener('keydown', (e) => {
 // Dragging functionality
 Draggable.create('.vsqh01-1-drag-proxy', {
   type: 'x',
-  trigger: '.vsqh01-1-slider',
+  trigger: slider,
   onPress() {
     this.startOffset = scrub.vars.offset;
   },
