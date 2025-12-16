@@ -113,27 +113,9 @@ The simplest way to integrate this effect:
 
 You can customize the slider behavior using data attributes on the `vsqh01-1-slider` element:
 
-| Attribute                 | Description                                                          |
-| ------------------------- | -------------------------------------------------------------------- |
-| `data-disable-scroll`     | Disables mouse wheel scrolling. Navigation only via drag or buttons. |
-| `data-disable-drag`       | Disables drag functionality. Navigation only via scroll or buttons.  |
-| `data-disable-fullscreen` | Disables fullscreen pin mode. The slider scrolls with the page.      |
-
-### Examples
-
-```html
-<!-- Default: fullscreen with infinite scroll and drag -->
-<vsqh01-1-slider class="vsqh01-1-slider">
-  <!-- Disable mouse wheel, keep drag -->
-  <vsqh01-1-slider data-disable-scroll class="vsqh01-1-slider">
-    <!-- Disable drag, keep scroll -->
-    <vsqh01-1-slider data-disable-drag class="vsqh01-1-slider">
-      <!-- Embedded in page (no fullscreen pin, scrolls with content) -->
-      <vsqh01-1-slider
-        data-disable-fullscreen
-        class="vsqh01-1-slider"></vsqh01-1-slider></vsqh01-1-slider></vsqh01-1-slider
-></vsqh01-1-slider>
-```
+| Attribute                 | Description                                                     |
+| ------------------------- | --------------------------------------------------------------- |
+| `data-disable-fullscreen` | Disables fullscreen pin mode. The slider scrolls with the page. |
 
 ---
 

@@ -107,6 +107,7 @@
   position: absolute;
   bottom: 40px;
   left: 40px;
+  white-space: nowrap;
   font-size: 8vw;
   /* text-transform: uppercase; */
   perspective: 100vw;

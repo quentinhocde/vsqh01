@@ -8,9 +8,6 @@ const spacing = 0.18,
   snapTime = gsap.utils.snap(spacing),
   items = gsap.utils.toArray('.vsqh01-1-slider_list li'),
   titles = gsap.utils.toArray('.vsqh01-1-slider_content li'),
-  disableScroll =
-    typeof slider.dataset.disableScroll == 'string' ? true : false,
-  disableDrag = typeof slider.dataset.disableDrag == 'string' ? true : false,
   disableFullscreen =
     typeof slider.dataset.disableFullscreen == 'string' ? true : false,
   titleHeight = titles[0].offsetHeight;
@@ -180,17 +177,6 @@ if (disableFullscreen) {
       scrollToOffset(scrub.vars.offset);
     }
   });
-
-  // Block wheel events when scroll is disabled (only relevant in fullscreen mode)
-  if (disableScroll) {
-    slider.addEventListener(
-      'wheel',
-      (e) => {
-        e.preventDefault();
-      },
-      { passive: false },
-    );
-  }
 }
 
 function initCallback() {
@@ -219,27 +205,25 @@ document.addEventListener('keydown', (e) => {
 });
 
 // Dragging functionality
-if (!disableDrag) {
-  Draggable.create('.vsqh01-1-drag-proxy', {
-    type: 'x',
-    trigger: slider,
-    onPress() {
-      this.startOffset = disableFullscreen ? dragOffset : scrub.vars.offset;
-    },
-    onDrag() {
-      const delta = (this.startX - this.x) * 0.001;
-      if (disableFullscreen) {
-        // In non-fullscreen mode, update dragOffset which is added to scroll progress
-        dragOffset = this.startOffset + delta;
-        scrub.vars.offset =
-          trigger.progress * seamlessLoop.duration() + dragOffset;
-      } else {
-        scrub.vars.offset = this.startOffset + delta;
-      }
-      scrub.invalidate().restart();
-    },
-    onDragEnd() {
-      scrollToOffset(scrub.vars.offset);
-    },
-  });
-}
+Draggable.create('.vsqh01-1-drag-proxy', {
+  type: 'x',
+  trigger: slider,
+  onPress() {
+    this.startOffset = disableFullscreen ? dragOffset : scrub.vars.offset;
+  },
+  onDrag() {
+    const delta = (this.startX - this.x) * 0.001;
+    if (disableFullscreen) {
+      // In non-fullscreen mode, update dragOffset which is added to scroll progress
+      dragOffset = this.startOffset + delta;
+      scrub.vars.offset =
+        trigger.progress * seamlessLoop.duration() + dragOffset;
+    } else {
+      scrub.vars.offset = this.startOffset + delta;
+    }
+    scrub.invalidate().restart();
+  },
+  onDragEnd() {
+    scrollToOffset(scrub.vars.offset);
+  },
+});
