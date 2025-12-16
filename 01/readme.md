@@ -42,7 +42,7 @@ The simplest way to integrate this effect:
 ### 2. Include the VSQH01_1 Module
 
 ```html
-<!-- From a CDN (replace with your URL) -->
+<!-- From a CDN -->
 <script src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01/01/dist/vsqh01-1.min.js"></script>
 
 <!-- Or locally -->
@@ -52,8 +52,8 @@ The simplest way to integrate this effect:
 ### 3. Add the HTML
 
 ```html
-<section class="vsqh01-1-slider_wrap">
-  <div class="vsqh01-1-slider">
+<vsqh01-1-slider class="vsqh01-1-slider">
+  <div class="vsqh01-1-slider_track">
     <!-- Slider Images (minimum 5 slides, must be duplicated) -->
     <ul class="vsqh01-1-slider_list">
       <li
@@ -102,10 +102,38 @@ The simplest way to integrate this effect:
   </div>
 
   <div class="vsqh01-1-drag-proxy"></div>
-</section>
+</vsqh01-1-slider>
 ```
 
 **That's it!** The module auto-initializes on page load.
+
+---
+
+## ⚙️ Options
+
+You can customize the slider behavior using data attributes on the `vsqh01-1-slider` element:
+
+| Attribute                 | Description                                                          |
+| ------------------------- | -------------------------------------------------------------------- |
+| `data-disable-scroll`     | Disables mouse wheel scrolling. Navigation only via drag or buttons. |
+| `data-disable-drag`       | Disables drag functionality. Navigation only via scroll or buttons.  |
+| `data-disable-fullscreen` | Disables fullscreen pin mode. The slider scrolls with the page.      |
+
+### Examples
+
+```html
+<!-- Default: fullscreen with infinite scroll and drag -->
+<vsqh01-1-slider class="vsqh01-1-slider">
+  <!-- Disable mouse wheel, keep drag -->
+  <vsqh01-1-slider data-disable-scroll class="vsqh01-1-slider">
+    <!-- Disable drag, keep scroll -->
+    <vsqh01-1-slider data-disable-drag class="vsqh01-1-slider">
+      <!-- Embedded in page (no fullscreen pin, scrolls with content) -->
+      <vsqh01-1-slider
+        data-disable-fullscreen
+        class="vsqh01-1-slider"></vsqh01-1-slider></vsqh01-1-slider></vsqh01-1-slider
+></vsqh01-1-slider>
+```
 
 ---
 
@@ -119,7 +147,7 @@ In **Project Settings > Custom Code > Footer Code**, add:
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/Draggable.min.js"></script>
-<script src="https://your-cdn.com/vsqh01-1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01/01/dist/vsqh01-1.min.js"></script>
 ```
 
 ### Step 2: Create the HTML Structure
@@ -127,8 +155,8 @@ In **Project Settings > Custom Code > Footer Code**, add:
 Create the following structure in Webflow:
 
 ```
-Section (class: vsqh01-1-slider_wrap)
-├── Div (class: vsqh01-1-slider)
+Div Block (tag: vsqh01-1-slider, class: vsqh01-1-slider)
+├── Div (class: vsqh01-1-slider_track)
 │   ├── List (class: vsqh01-1-slider_list)
 │   │   ├── List Item (background-image inline style)
 │   │   ├── List Item ...
@@ -145,6 +173,8 @@ Section (class: vsqh01-1-slider_wrap)
 └── Div (class: vsqh01-1-drag-proxy)
 ```
 
+> 💡 **Tip**: In Webflow, use an Embed element with custom HTML tag `vsqh01-1-slider` for the wrapper, or use a Div Block and change the tag in settings.
+
 ### Step 3: Publish
 
 That's all! The slider will work automatically.
@@ -156,6 +186,7 @@ That's all! The slider will work automatically.
 1. **Minimum 5 slides** required for the seamless loop to work properly
 2. Images AND titles must be **duplicated** for seamless looping
 3. CSS is automatically injected by the script
+4. The wrapper element uses a custom tag `<vsqh01-1-slider>` with class `vsqh01-1-slider`
 
 ---
 
@@ -165,7 +196,7 @@ Styles are injected automatically, but you can override them:
 
 ```css
 /* Example: change background color */
-.vsqh01-1-slider {
+.vsqh01-1-slider_track {
   background-color: #dddddd;
   color: #1a1a1a;
 }
@@ -175,4 +206,26 @@ Styles are injected automatically, but you can override them:
   font-family: 'Your Font', sans-serif;
   font-size: 4vw;
 }
+
+/* Example: change slider dimensions */
+.vsqh01-1-slider {
+  height: 80vh; /* instead of 100vh */
+}
+```
+
+---
+
+## 🏗️ HTML Structure Reference
+
+```
+vsqh01-1-slider.vsqh01-1-slider     → Main wrapper (custom element)
+├── .vsqh01-1-slider_track          → Inner container (pinned in fullscreen mode)
+│   ├── .vsqh01-1-slider_list       → Images container
+│   │   └── li                      → Image slides (background-image)
+│   ├── .vsqh01-1-actions           → Navigation buttons (hidden by default)
+│   │   ├── .prev                   → Previous button
+│   │   └── .next                   → Next button
+│   └── .vsqh01-1-slider_content    → Titles container
+│       └── li                      → Title slides
+└── .vsqh01-1-drag-proxy            → Invisible drag target
 ```

@@ -67,6 +67,16 @@ function shiftScrollIteration(iterationDelta, scrollTo) {
 
 // Moves the scroll playhead to the position that corresponds to the seamlessLoop time, and wraps if necessary.
 function scrollToOffset(offset) {
+  // In non-fullscreen mode, don't manipulate scroll - update dragOffset instead
+  if (disableFullscreen) {
+    let snappedOffset = snapTime(offset);
+    // Calculate what dragOffset should be to achieve the snapped position
+    dragOffset = snappedOffset - trigger.progress * seamlessLoop.duration();
+    scrub.vars.offset = snappedOffset;
+    scrub.invalidate().restart();
+    return;
+  }
+
   let snappedTime = snapTime(offset),
     progress =
       (snappedTime - seamlessLoop.duration() * iteration) /

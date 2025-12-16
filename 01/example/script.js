@@ -8,6 +8,11 @@ const spacing = 0.18,
   snapTime = gsap.utils.snap(spacing),
   items = gsap.utils.toArray('.vsqh01-1-slider_list li'),
   titles = gsap.utils.toArray('.vsqh01-1-slider_content li'),
+  disableScroll =
+    typeof slider.dataset.disableScroll == 'string' ? true : false,
+  disableDrag = typeof slider.dataset.disableDrag == 'string' ? true : false,
+  disableFullscreen =
+    typeof slider.dataset.disableFullscreen == 'string' ? true : false,
   titleHeight = titles[0].offsetHeight;
 
 // Animation function for each item
@@ -106,6 +111,9 @@ const seamlessLoop = buildSeamlessLoop(items, spacing, animateFunc);
 const playhead = { offset: 0 };
 const wrapTime = gsap.utils.wrap(0, seamlessLoop.duration());
 
+// Offset added by drag in non-fullscreen mode (persists between scroll updates)
+let dragOffset = 0;
+
 // Intermediary tween that creates a smooth transition between user interactions and the animation.
 // Instead of jumping directly to the new position, it eases the movement over 0.4s.
 const scrub = gsap.to(playhead, {
@@ -120,38 +128,70 @@ const scrub = gsap.to(playhead, {
 });
 
 let isInit = false;
+let trigger = null;
 
-const trigger = ScrollTrigger.create({
-  trigger: sliderTrack,
-  start: 'top top',
-  // Infinite scroll loop: teleport to opposite edge when reaching boundaries
-  onUpdate(self) {
-    if (!isInit) {
-      initCallback();
-      return;
-    }
-    // Calculate scroll relative to the trigger start position
-    let scroll = self.scroll() - self.start;
-    let scrollRange = self.end - self.start;
-    if (scroll > scrollRange - 1) {
-      shiftScrollIteration(1, self.start + 1);
-    } else if (scroll < 1 && self.direction < 0) {
-      shiftScrollIteration(-1, self.start + scrollRange - 2);
-    } else {
-      scrub.vars.offset = (iteration + self.progress) * seamlessLoop.duration();
+if (disableFullscreen) {
+  // Fullscreen disabled: no pin, animation follows scroll through viewport
+  trigger = ScrollTrigger.create({
+    trigger: sliderTrack,
+    start: 'top bottom',
+    end: 'bottom top',
+    onUpdate(self) {
+      if (!isInit) {
+        initCallback();
+        return;
+      }
+      // Map scroll progress to animation + dragOffset from user interaction
+      scrub.vars.offset = self.progress * seamlessLoop.duration() + dragOffset;
       scrub.invalidate().restart();
-    }
-  },
-  end: `+=${items.length * 1000}`,
-  pin: slider,
-});
+    },
+  });
+} else {
+  // Fullscreen mode: pin with infinite scroll
+  trigger = ScrollTrigger.create({
+    trigger: sliderTrack,
+    start: 'top top',
+    // Infinite scroll loop: teleport to opposite edge when reaching boundaries
+    onUpdate(self) {
+      if (!isInit) {
+        initCallback();
+        return;
+      }
+      // Calculate scroll relative to the trigger start position
+      let scroll = self.scroll() - self.start;
+      let scrollRange = self.end - self.start;
+      if (scroll > scrollRange - 1) {
+        shiftScrollIteration(1, self.start + 1);
+      } else if (scroll < 1 && self.direction < 0) {
+        shiftScrollIteration(-1, self.start + scrollRange - 2);
+      } else {
+        scrub.vars.offset =
+          (iteration + self.progress) * seamlessLoop.duration();
+        scrub.invalidate().restart();
+      }
+    },
+    end: `+=${items.length * 1000}`,
+    pin: slider,
+  });
 
-// Snap to closest item when scrolling ends
-ScrollTrigger.addEventListener('scrollEnd', () => {
-  if (isInit) {
-    scrollToOffset(scrub.vars.offset);
+  // Snap to closest item when scrolling ends (only in fullscreen mode)
+  ScrollTrigger.addEventListener('scrollEnd', () => {
+    if (isInit) {
+      scrollToOffset(scrub.vars.offset);
+    }
+  });
+
+  // Block wheel events when scroll is disabled (only relevant in fullscreen mode)
+  if (disableScroll) {
+    slider.addEventListener(
+      'wheel',
+      (e) => {
+        e.preventDefault();
+      },
+      { passive: false },
+    );
   }
-});
+}
 
 function initCallback() {
   isInit = true;
@@ -179,17 +219,27 @@ document.addEventListener('keydown', (e) => {
 });
 
 // Dragging functionality
-Draggable.create('.vsqh01-1-drag-proxy', {
-  type: 'x',
-  trigger: slider,
-  onPress() {
-    this.startOffset = scrub.vars.offset;
-  },
-  onDrag() {
-    scrub.vars.offset = this.startOffset + (this.startX - this.x) * 0.001;
-    scrub.invalidate().restart();
-  },
-  onDragEnd() {
-    scrollToOffset(scrub.vars.offset);
-  },
-});
+if (!disableDrag) {
+  Draggable.create('.vsqh01-1-drag-proxy', {
+    type: 'x',
+    trigger: slider,
+    onPress() {
+      this.startOffset = disableFullscreen ? dragOffset : scrub.vars.offset;
+    },
+    onDrag() {
+      const delta = (this.startX - this.x) * 0.001;
+      if (disableFullscreen) {
+        // In non-fullscreen mode, update dragOffset which is added to scroll progress
+        dragOffset = this.startOffset + delta;
+        scrub.vars.offset =
+          trigger.progress * seamlessLoop.duration() + dragOffset;
+      } else {
+        scrub.vars.offset = this.startOffset + delta;
+      }
+      scrub.invalidate().restart();
+    },
+    onDragEnd() {
+      scrollToOffset(scrub.vars.offset);
+    },
+  });
+}

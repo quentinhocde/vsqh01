@@ -24,9 +24,14 @@
       Copy this entire section to your page.
       Replace the images and titles with your own content.
       Minimum 5 slides required, must be duplicated for seamless loop.
+      
+      OPTIONS (add to vsqh01-1-slider element):
+      - data-disable-scroll : Disable mouse wheel scrolling
+      - data-disable-drag   : Disable drag functionality  
+      - data-disable-fullscreen : Disable fullscreen pin mode (scrolls with page)
     -->
-    <section class="vsqh01-1-slider_wrap">
-      <div class="vsqh01-1-slider">
+    <vsqh01-1-slider class="vsqh01-1-slider">
+      <div class="vsqh01-1-slider_track">
         <!-- Slider Images (minimum 5 required, duplicated) -->
         <ul class="vsqh01-1-slider_list">
           <li
@@ -94,9 +99,9 @@
         </ul>
       </div>
 
-      <!-- Drag proxy (auto-created if missing, but you can include it) -->
+      <!-- Drag proxy (required for drag functionality) -->
       <div class="vsqh01-1-drag-proxy"></div>
-    </section>
+    </vsqh01-1-slider>
     <!-- END VSQH01_1 SLIDER -->
 
     <!-- 
