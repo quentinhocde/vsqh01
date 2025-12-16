@@ -1,6 +1,18 @@
 # VSQH01_1 - Infinite 3D Slider
 
-A 3D infinite slider component using GSAP. Made with ❤️ by Quentin Hocdé for VSGOODS.
+A 3D infinite slider component using GSAP. Made with ♥︎ by Quentin Hocdé for VSGOODS.
+
+> **This effect is designed to run fullscreen by default,**  
+> but you can also integrate it inside an existing page (non-fullscreen)  
+> by adding the `data-disable-fullscreen` attribute to the root element:
+
+```html
+<vsqh01-1-slider class="vsqh01-1-slider" data-disable-fullscreen>
+  ...
+</vsqh01-1-slider>
+```
+
+This will sync the animation to your page scroll, without taking over fullscreen.
 
 ## 📖 Two Ways to Use This Effect
 
