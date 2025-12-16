@@ -57,26 +57,26 @@ The simplest way to integrate this effect:
     <!-- Slider Images (minimum 5 slides, must be duplicated) -->
     <ul class="vsqh01-1-slider_list">
       <li
-        style="background-image: url('https://picsum.photos/id/1067/800/1200')"></li>
+        style="background-image: url('https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/01.jpg')"></li>
       <li
-        style="background-image: url('https://picsum.photos/id/1062/800/1200')"></li>
+        style="background-image: url('https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/02.jpg')"></li>
       <li
-        style="background-image: url('https://picsum.photos/id/164/800/1200')"></li>
+        style="background-image: url('https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/03.jpg')"></li>
       <li
-        style="background-image: url('https://picsum.photos/id/429/800/1200')"></li>
+        style="background-image: url('https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/04.jpg')"></li>
       <li
-        style="background-image: url('https://picsum.photos/id/1042/800/1200')"></li>
+        style="background-image: url('https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/05.jpg')"></li>
       <!-- Duplicate your slides for seamless loop -->
       <li
-        style="background-image: url('https://picsum.photos/id/1067/800/1200')"></li>
+        style="background-image: url('https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/01.jpg')"></li>
       <li
-        style="background-image: url('https://picsum.photos/id/1062/800/1200')"></li>
+        style="background-image: url('https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/02.jpg')"></li>
       <li
-        style="background-image: url('https://picsum.photos/id/164/800/1200')"></li>
+        style="background-image: url('https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/03.jpg')"></li>
       <li
-        style="background-image: url('https://picsum.photos/id/429/800/1200')"></li>
+        style="background-image: url('https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/04.jpg')"></li>
       <li
-        style="background-image: url('https://picsum.photos/id/1042/800/1200')"></li>
+        style="background-image: url('https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/05.jpg')"></li>
     </ul>
 
     <!-- Navigation Buttons (optional, hidden by default) -->
@@ -87,17 +87,17 @@ The simplest way to integrate this effect:
 
     <!-- Titles (must be duplicated like images) -->
     <ul class="vsqh01-1-slider_content">
-      <li>Brutalist Tower</li>
-      <li>Spiral Stairs</li>
-      <li>Concrete Pillars</li>
-      <li>Sacred Dome</li>
-      <li>Grid Windows</li>
+      <li>Golden Columns</li>
+      <li>Marble Gallery</li>
+      <li>Gothic Passage</li>
+      <li>Royal Arches</li>
+      <li>Gilded Palace</li>
       <!-- Duplicate your titles -->
-      <li>Brutalist Tower</li>
-      <li>Spiral Stairs</li>
-      <li>Concrete Pillars</li>
-      <li>Sacred Dome</li>
-      <li>Grid Windows</li>
+      <li>Golden Columns</li>
+      <li>Marble Gallery</li>
+      <li>Gothic Passage</li>
+      <li>Royal Arches</li>
+      <li>Gilded Palace</li>
     </ul>
   </div>
 
