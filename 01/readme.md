@@ -43,7 +43,7 @@ The simplest way to integrate this effect:
 
 ```html
 <!-- From a CDN -->
-<script src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01/01/dist/vsqh01-1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/dist/vsqh01-1.min.js"></script>
 
 <!-- Or locally -->
 <script src="dist/vsqh01-1.min.js"></script>
@@ -129,7 +129,7 @@ In **Project Settings > Custom Code > Footer Code**, add:
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/Draggable.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01/01/dist/vsqh01-1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/dist/vsqh01-1.min.js"></script>
 ```
 
 ### Step 2: Create the HTML Structure
