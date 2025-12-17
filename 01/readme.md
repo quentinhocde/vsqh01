@@ -41,89 +41,6 @@ The simplest way to integrate this effect:
 
 ---
 
-## 🚀 Quick Integration
-
-### 1. Include GSAP Dependencies
-
-```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/Draggable.min.js"></script>
-```
-
-### 2. Include the VSQH01_1 Module
-
-```html
-<!-- From a CDN -->
-<script src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/dist/vsqh01-1.min.js"></script>
-
-<!-- Or locally -->
-<script src="dist/vsqh01-1.min.js"></script>
-```
-
-### 3. Add the HTML
-
-```html
-<vsqh01-1-slider class="vsqh01-1-slider">
-  <div class="vsqh01-1-slider_track">
-    <!-- Slider Images (minimum 9 slides) -->
-    <!-- Use data-src for lazy loading, alt attribute is used as title -->
-    <ul class="vsqh01-1-slider_list">
-      <li class="vsqh01-1-slider_card">
-        <img
-          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/01.jpg"
-          alt="Image 01" />
-      </li>
-      <li class="vsqh01-1-slider_card">
-        <img
-          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/02.jpg"
-          alt="Image 02" />
-      </li>
-      <li class="vsqh01-1-slider_card">
-        <img
-          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/03.jpg"
-          alt="Image 03" />
-      </li>
-      <li class="vsqh01-1-slider_card">
-        <img
-          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/04.jpg"
-          alt="Image 04" />
-      </li>
-      <li class="vsqh01-1-slider_card">
-        <img
-          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/05.jpg"
-          alt="Image 05" />
-      </li>
-      <li class="vsqh01-1-slider_card">
-        <img
-          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/06.jpg"
-          alt="Image 06" />
-      </li>
-      <li class="vsqh01-1-slider_card">
-        <img
-          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/07.jpg"
-          alt="Image 07" />
-      </li>
-      <li class="vsqh01-1-slider_card">
-        <img
-          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/08.jpg"
-          alt="Image 08" />
-      </li>
-      <li class="vsqh01-1-slider_card">
-        <img
-          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/09.jpg"
-          alt="Image 09" />
-      </li>
-    </ul>
-  </div>
-  <div class="vsqh01-1-drag-proxy"></div>
-</vsqh01-1-slider>
-```
-
-**That's it!** The module auto-initializes on page load.
-
----
-
 ## ⚙️ Options
 
 You can customize the slider behavior using data attributes on the `vsqh01-1-slider` element:
@@ -149,6 +66,89 @@ You can customize the slider behavior using data attributes on the `vsqh01-1-sli
 
 ---
 
+## 🚀 Quick Integration
+
+### 1. Include GSAP Dependencies
+
+```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/Draggable.min.js"></script>
+```
+
+### 2. Include the VSQH01_1 Module
+
+```html
+<!-- From a CDN -->
+<script src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@0.1.0/01/dist/vsqh01-1.min.js"></script>
+
+<!-- Or locally -->
+<script src="dist/vsqh01-1.min.js"></script>
+```
+
+### 3. Add the HTML
+
+```html
+<vsqh01-1-slider class="vsqh01-1-slider">
+  <div class="vsqh01-1-slider_track">
+    <!-- Slider Images (minimum 9 slides) -->
+    <!-- Use data-src for lazy loading, alt attribute is used as title -->
+    <ul class="vsqh01-1-slider_list">
+      <li class="vsqh01-1-slider_card">
+        <img
+          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@0.1.0/01/example/images/01.jpg"
+          alt="Image 01" />
+      </li>
+      <li class="vsqh01-1-slider_card">
+        <img
+          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@0.1.0/01/example/images/02.jpg"
+          alt="Image 02" />
+      </li>
+      <li class="vsqh01-1-slider_card">
+        <img
+          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@0.1.0/01/example/images/03.jpg"
+          alt="Image 03" />
+      </li>
+      <li class="vsqh01-1-slider_card">
+        <img
+          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@0.1.0/01/example/images/04.jpg"
+          alt="Image 04" />
+      </li>
+      <li class="vsqh01-1-slider_card">
+        <img
+          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@0.1.0/01/example/images/05.jpg"
+          alt="Image 05" />
+      </li>
+      <li class="vsqh01-1-slider_card">
+        <img
+          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@0.1.0/01/example/images/06.jpg"
+          alt="Image 06" />
+      </li>
+      <li class="vsqh01-1-slider_card">
+        <img
+          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@0.1.0/01/example/images/07.jpg"
+          alt="Image 07" />
+      </li>
+      <li class="vsqh01-1-slider_card">
+        <img
+          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@0.1.0/01/example/images/08.jpg"
+          alt="Image 08" />
+      </li>
+      <li class="vsqh01-1-slider_card">
+        <img
+          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@0.1.0/01/example/images/09.jpg"
+          alt="Image 09" />
+      </li>
+    </ul>
+  </div>
+  <div class="vsqh01-1-drag-proxy"></div>
+</vsqh01-1-slider>
+```
+
+**That's it!** The module auto-initializes on page load.
+
+---
+
 ## 📦 Webflow Integration
 
 ### Step 1: Add the Scripts
@@ -159,7 +159,7 @@ In **Project Settings > Custom Code > Footer Code**, add:
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/Draggable.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/dist/vsqh01-1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@0.1.0/01/dist/vsqh01-1.min.js"></script>
 ```
 
 ### Step 2: Create the HTML Structure
