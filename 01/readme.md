@@ -16,7 +16,7 @@ This will sync the animation to your page scroll, without taking over fullscreen
 
 ## 📖 Two Ways to Use This Effect
 
-### Option 1: Custom Integration (Advanced)
+### Option 1: Custom Integration (Advanced, but more flexible)
 
 If you're comfortable with code and want full control:
 
@@ -67,33 +67,34 @@ The simplest way to integrate this effect:
 <vsqh01-1-slider class="vsqh01-1-slider">
   <div class="vsqh01-1-slider_track">
     <!-- Slider Images (minimum 9 slides) -->
+    <!-- Use data-src for lazy loading, alt attribute is used as title -->
     <ul class="vsqh01-1-slider_list">
       <li class="vsqh01-1-slider_card">
-        <img src="images/01.jpg" alt="" />
+        <img data-src="images/01.jpg" alt="Golden Columns" />
       </li>
       <li class="vsqh01-1-slider_card">
-        <img src="images/02.jpg" alt="" />
+        <img data-src="images/02.jpg" alt="Marble Gallery" />
       </li>
       <li class="vsqh01-1-slider_card">
-        <img src="images/03.jpg" alt="" />
+        <img data-src="images/03.jpg" alt="Gothic Passage" />
       </li>
       <li class="vsqh01-1-slider_card">
-        <img src="images/04.jpg" alt="" />
+        <img data-src="images/04.jpg" alt="Royal Arches" />
       </li>
       <li class="vsqh01-1-slider_card">
-        <img src="images/05.jpg" alt="" />
+        <img data-src="images/05.jpg" alt="Gilded Palace" />
       </li>
       <li class="vsqh01-1-slider_card">
-        <img src="images/06.jpg" alt="" />
+        <img data-src="images/06.jpg" alt="Crystal Hall" />
       </li>
       <li class="vsqh01-1-slider_card">
-        <img src="images/07.jpg" alt="" />
+        <img data-src="images/07.jpg" alt="Stone Vault" />
       </li>
       <li class="vsqh01-1-slider_card">
-        <img src="images/08.jpg" alt="" />
+        <img data-src="images/08.jpg" alt="Bronze Gate" />
       </li>
       <li class="vsqh01-1-slider_card">
-        <img src="images/09.jpg" alt="" />
+        <img data-src="images/09.jpg" alt="Silver Dome" />
       </li>
     </ul>
   </div>
@@ -152,15 +153,17 @@ Div Block (tag: vsqh01-1-slider, class: vsqh01-1-slider)
 ├── Div (class: vsqh01-1-slider_track)
 │   └── List (class: vsqh01-1-slider_list)
 │       ├── List Item (class: vsqh01-1-slider_card)
-│       │   └── Image
+│       │   └── Image (data-src + alt as title)
 │       ├── List Item (class: vsqh01-1-slider_card)
-│       │   └── Image
+│       │   └── Image (data-src + alt as title)
 │       └── ... (min 9 items)
 │
 └── Div (class: vsqh01-1-drag-proxy)
 ```
 
 > 💡 **Tip**: In Webflow, use an Embed element with custom HTML tag `vsqh01-1-slider` for the wrapper, or use a Div Block and change the tag in settings.
+
+> ⚠️ **Important**: Use `data-src` attribute instead of `src` for images.
 
 ### Step 3: Publish
 
@@ -172,8 +175,10 @@ That's all! The slider will work automatically.
 
 1. **Minimum 9 slides** required for the seamless loop to work properly (with default spacing of 0.18)
 2. Each slide must have the class `vsqh01-1-slider_card`
-3. CSS is automatically injected by the script
-4. The wrapper element uses a custom tag `<vsqh01-1-slider>` with class `vsqh01-1-slider`
+3. Use `data-src` instead of `src` for lazy loading
+4. The `alt` attribute is used as the slide title
+5. CSS is automatically injected by the script
+6. The wrapper element uses a custom tag `<vsqh01-1-slider>` with class `vsqh01-1-slider`
 
 ### Spacing & Minimum Images
 
@@ -203,6 +208,6 @@ vsqh01-1-slider.vsqh01-1-slider     → Main wrapper (custom element)
 ├── .vsqh01-1-slider_track          → Inner container (pinned in fullscreen mode)
 │   └── .vsqh01-1-slider_list       → Images container
 │       └── li.vsqh01-1-slider_card → Slide card
-│           └── img                 → Image
+│           └── img[data-src, alt]  → Image (data-src for lazy load, alt for title)
 └── .vsqh01-1-drag-proxy            → Invisible drag target
 ```
