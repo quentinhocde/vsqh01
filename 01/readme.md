@@ -66,53 +66,37 @@ The simplest way to integrate this effect:
 ```html
 <vsqh01-1-slider class="vsqh01-1-slider">
   <div class="vsqh01-1-slider_track">
-    <!-- Slider Images (minimum 5 slides, must be duplicated) -->
+    <!-- Slider Images (minimum 9 slides) -->
     <ul class="vsqh01-1-slider_list">
-      <li
-        style="background-image: url('https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/01.jpg')"></li>
-      <li
-        style="background-image: url('https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/02.jpg')"></li>
-      <li
-        style="background-image: url('https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/03.jpg')"></li>
-      <li
-        style="background-image: url('https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/04.jpg')"></li>
-      <li
-        style="background-image: url('https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/05.jpg')"></li>
-      <!-- Duplicate your slides for seamless loop -->
-      <li
-        style="background-image: url('https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/01.jpg')"></li>
-      <li
-        style="background-image: url('https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/02.jpg')"></li>
-      <li
-        style="background-image: url('https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/03.jpg')"></li>
-      <li
-        style="background-image: url('https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/04.jpg')"></li>
-      <li
-        style="background-image: url('https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/05.jpg')"></li>
-    </ul>
-
-    <!-- Navigation Buttons (optional, hidden by default) -->
-    <div class="vsqh01-1-actions">
-      <button class="prev">Prev</button>
-      <button class="next">Next</button>
-    </div>
-
-    <!-- Titles (must be duplicated like images) -->
-    <ul class="vsqh01-1-slider_content">
-      <li>Golden Columns</li>
-      <li>Marble Gallery</li>
-      <li>Gothic Passage</li>
-      <li>Royal Arches</li>
-      <li>Gilded Palace</li>
-      <!-- Duplicate your titles -->
-      <li>Golden Columns</li>
-      <li>Marble Gallery</li>
-      <li>Gothic Passage</li>
-      <li>Royal Arches</li>
-      <li>Gilded Palace</li>
+      <li class="vsqh01-1-slider_card">
+        <img src="images/01.jpg" alt="" />
+      </li>
+      <li class="vsqh01-1-slider_card">
+        <img src="images/02.jpg" alt="" />
+      </li>
+      <li class="vsqh01-1-slider_card">
+        <img src="images/03.jpg" alt="" />
+      </li>
+      <li class="vsqh01-1-slider_card">
+        <img src="images/04.jpg" alt="" />
+      </li>
+      <li class="vsqh01-1-slider_card">
+        <img src="images/05.jpg" alt="" />
+      </li>
+      <li class="vsqh01-1-slider_card">
+        <img src="images/06.jpg" alt="" />
+      </li>
+      <li class="vsqh01-1-slider_card">
+        <img src="images/07.jpg" alt="" />
+      </li>
+      <li class="vsqh01-1-slider_card">
+        <img src="images/08.jpg" alt="" />
+      </li>
+      <li class="vsqh01-1-slider_card">
+        <img src="images/09.jpg" alt="" />
+      </li>
     </ul>
   </div>
-
   <div class="vsqh01-1-drag-proxy"></div>
 </vsqh01-1-slider>
 ```
@@ -125,9 +109,24 @@ The simplest way to integrate this effect:
 
 You can customize the slider behavior using data attributes on the `vsqh01-1-slider` element:
 
-| Attribute                 | Description                                                     |
-| ------------------------- | --------------------------------------------------------------- |
-| `data-disable-fullscreen` | Disables fullscreen pin mode. The slider scrolls with the page. |
+| Attribute                 | Description                                                                |
+| ------------------------- | -------------------------------------------------------------------------- |
+| `data-disable-fullscreen` | Disables fullscreen pin mode. The slider scrolls with the page.            |
+| `data-disable-magnet`     | Disables snap to closest slide after scroll/drag ends.                     |
+| `data-scroll-ratio="1"`   | Scroll speed multiplier. `2` = 2× faster, `0.5` = 2× slower. Default: `1`. |
+| `data-drag-ratio="1"`     | Drag speed multiplier. `2` = 2× faster, `0.5` = 2× slower. Default: `1`.   |
+
+### Example with options
+
+```html
+<vsqh01-1-slider
+  class="vsqh01-1-slider"
+  data-scroll-ratio="1.5"
+  data-drag-ratio="0.8"
+  data-disable-magnet>
+  ...
+</vsqh01-1-slider>
+```
 
 ---
 
@@ -151,18 +150,12 @@ Create the following structure in Webflow:
 ```
 Div Block (tag: vsqh01-1-slider, class: vsqh01-1-slider)
 ├── Div (class: vsqh01-1-slider_track)
-│   ├── List (class: vsqh01-1-slider_list)
-│   │   ├── List Item (background-image inline style)
-│   │   ├── List Item ...
-│   │   └── (min 5 items, duplicated)
-│   │
-│   ├── Div (class: vsqh01-1-actions) [optional]
-│   │   ├── Button (class: prev)
-│   │   └── Button (class: next)
-│   │
-│   └── List (class: vsqh01-1-slider_content)
-│       ├── List Item (title text)
-│       └── (duplicated like images)
+│   └── List (class: vsqh01-1-slider_list)
+│       ├── List Item (class: vsqh01-1-slider_card)
+│       │   └── Image
+│       ├── List Item (class: vsqh01-1-slider_card)
+│       │   └── Image
+│       └── ... (min 9 items)
 │
 └── Div (class: vsqh01-1-drag-proxy)
 ```
@@ -177,35 +170,29 @@ That's all! The slider will work automatically.
 
 ## 📝 Important Notes
 
-1. **Minimum 5 slides** required for the seamless loop to work properly
-2. Images AND titles must be **duplicated** for seamless looping
+1. **Minimum 9 slides** required for the seamless loop to work properly (with default spacing of 0.18)
+2. Each slide must have the class `vsqh01-1-slider_card`
 3. CSS is automatically injected by the script
 4. The wrapper element uses a custom tag `<vsqh01-1-slider>` with class `vsqh01-1-slider`
 
----
+### Spacing & Minimum Images
 
-## 🎨 CSS Customization
+If you customize the `spacing` value in the script, the minimum number of images required changes:
 
-Styles are injected automatically, but you can override them:
+| Spacing | Minimum images |
+| ------- | -------------- |
+| 0.10    | 16             |
+| 0.12    | 13             |
+| 0.15    | 11             |
+| 0.18    | 9 (default)    |
+| 0.20    | 8              |
+| 0.25    | 7              |
+| 0.30    | 6              |
+| 0.35    | 5              |
+| 0.40    | 5              |
+| 0.50    | 4              |
 
-```css
-/* Example: change background color */
-.vsqh01-1-slider_track {
-  background-color: #dddddd;
-  color: #1a1a1a;
-}
-
-/* Example: customize titles */
-.vsqh01-1-slider_content {
-  font-family: 'Your Font', sans-serif;
-  font-size: 4vw;
-}
-
-/* Example: change slider dimensions */
-.vsqh01-1-slider {
-  height: 80vh; /* instead of 100vh */
-}
-```
+> **Rule of thumb**: smaller spacing = more images needed, larger spacing = fewer images needed.
 
 ---
 
@@ -214,12 +201,8 @@ Styles are injected automatically, but you can override them:
 ```
 vsqh01-1-slider.vsqh01-1-slider     → Main wrapper (custom element)
 ├── .vsqh01-1-slider_track          → Inner container (pinned in fullscreen mode)
-│   ├── .vsqh01-1-slider_list       → Images container
-│   │   └── li                      → Image slides (background-image)
-│   ├── .vsqh01-1-actions           → Navigation buttons (hidden by default)
-│   │   ├── .prev                   → Previous button
-│   │   └── .next                   → Next button
-│   └── .vsqh01-1-slider_content    → Titles container
-│       └── li                      → Title slides
+│   └── .vsqh01-1-slider_list       → Images container
+│       └── li.vsqh01-1-slider_card → Slide card
+│           └── img                 → Image
 └── .vsqh01-1-drag-proxy            → Invisible drag target
 ```

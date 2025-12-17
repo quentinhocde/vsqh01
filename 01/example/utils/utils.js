@@ -27,6 +27,11 @@ function buildSeamlessLoop(items, spacing, animateFunc) {
   }
 
   rawSequence.time(startTime);
+
+  // Calculate wrap start time, ensuring positive duration for the wrap tween
+  // When spacing is large, overlap * spacing + 1 can exceed startTime
+  let wrapFromTime = Math.min(overlap * spacing + 1, startTime - 0.01);
+
   seamlessLoop
     .to(rawSequence, {
       time: loopTime,
@@ -35,10 +40,10 @@ function buildSeamlessLoop(items, spacing, animateFunc) {
     })
     .fromTo(
       rawSequence,
-      { time: overlap * spacing + 1 },
+      { time: wrapFromTime },
       {
         time: startTime,
-        duration: startTime - (overlap * spacing + 1),
+        duration: startTime - wrapFromTime,
         immediateRender: false,
         ease: 'none',
       },
@@ -67,29 +72,50 @@ function shiftScrollIteration(iterationDelta, scrollTo) {
 
 // Moves the scroll playhead to the position that corresponds to the seamlessLoop time, and wraps if necessary.
 function scrollToOffset(offset) {
+  let snappedOffset = snapTime(offset);
+
   // In non-fullscreen mode, don't manipulate scroll - update dragOffset instead
   if (disableFullscreen) {
-    let snappedOffset = snapTime(offset);
     // Calculate what dragOffset should be to achieve the snapped position
-    dragOffset = snappedOffset - trigger.progress * seamlessLoop.duration();
+    dragOffset =
+      snappedOffset - trigger.progress * seamlessLoop.duration() * scrollRatio;
     scrub.vars.offset = snappedOffset;
     scrub.invalidate().restart();
     return;
   }
 
-  let snappedTime = snapTime(offset),
-    progress =
-      (snappedTime - seamlessLoop.duration() * iteration) /
-      seamlessLoop.duration(),
+  // Fullscreen mode: reset dragOffset and calculate scroll position for snapped offset
+  // After snap, dragOffset = 0 so offset = (iteration + progress) * duration * scrollRatio
+  // Solving for progress: progress = snappedOffset / (duration * scrollRatio) - iteration
+  dragOffset = 0;
+  let progress =
+      snappedOffset / (seamlessLoop.duration() * scrollRatio) - iteration,
     scroll = progressToScroll(progress);
 
   if (progress >= 1 || progress < 0) {
     return shiftScrollIteration(Math.floor(progress), scroll);
   }
 
-  scrub.vars.offset = (iteration + trigger.progress) * seamlessLoop.duration();
+  // Animate to snapped position (needed when scroll position doesn't change much)
+  scrub.vars.offset = snappedOffset;
   scrub.invalidate().restart();
 
   trigger.scroll(scroll);
   trigger.update();
+}
+
+// Wait for all images to load
+function loadImages(images) {
+  const promises = images.map((img) => {
+    img.src = img.dataset.src;
+    if (!img || img.complete) return Promise.resolve();
+
+    return new Promise((resolve) => {
+      const done = () => resolve();
+      img.addEventListener('load', done, { once: true });
+      img.addEventListener('error', done, { once: true });
+    });
+  });
+
+  return Promise.all(promises);
 }
