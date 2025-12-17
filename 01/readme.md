@@ -70,31 +70,49 @@ The simplest way to integrate this effect:
     <!-- Use data-src for lazy loading, alt attribute is used as title -->
     <ul class="vsqh01-1-slider_list">
       <li class="vsqh01-1-slider_card">
-        <img data-src="images/01.jpg" alt="Golden Columns" />
+        <img
+          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/examples/images/01.jpg"
+          alt="Image 01" />
       </li>
       <li class="vsqh01-1-slider_card">
-        <img data-src="images/02.jpg" alt="Marble Gallery" />
+        <img
+          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/examples/images/02.jpg"
+          alt="Image 02" />
       </li>
       <li class="vsqh01-1-slider_card">
-        <img data-src="images/03.jpg" alt="Gothic Passage" />
+        <img
+          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/examples/images/03.jpg"
+          alt="Image 03" />
       </li>
       <li class="vsqh01-1-slider_card">
-        <img data-src="images/04.jpg" alt="Royal Arches" />
+        <img
+          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/examples/images/04.jpg"
+          alt="Image 04" />
       </li>
       <li class="vsqh01-1-slider_card">
-        <img data-src="images/05.jpg" alt="Gilded Palace" />
+        <img
+          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/examples/images/05.jpg"
+          alt="Image 05" />
       </li>
       <li class="vsqh01-1-slider_card">
-        <img data-src="images/06.jpg" alt="Crystal Hall" />
+        <img
+          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/examples/images/06.jpg"
+          alt="Image 06" />
       </li>
       <li class="vsqh01-1-slider_card">
-        <img data-src="images/07.jpg" alt="Stone Vault" />
+        <img
+          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/examples/images/07.jpg"
+          alt="Image 07" />
       </li>
       <li class="vsqh01-1-slider_card">
-        <img data-src="images/08.jpg" alt="Bronze Gate" />
+        <img
+          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/examples/images/08.jpg"
+          alt="Image 08" />
       </li>
       <li class="vsqh01-1-slider_card">
-        <img data-src="images/09.jpg" alt="Silver Dome" />
+        <img
+          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/examples/images/09.jpg"
+          alt="Image 09" />
       </li>
     </ul>
   </div>
