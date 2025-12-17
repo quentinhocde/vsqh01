@@ -71,47 +71,47 @@ The simplest way to integrate this effect:
     <ul class="vsqh01-1-slider_list">
       <li class="vsqh01-1-slider_card">
         <img
-          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/examples/images/01.jpg"
+          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/01.jpg"
           alt="Image 01" />
       </li>
       <li class="vsqh01-1-slider_card">
         <img
-          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/examples/images/02.jpg"
+          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/02.jpg"
           alt="Image 02" />
       </li>
       <li class="vsqh01-1-slider_card">
         <img
-          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/examples/images/03.jpg"
+          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/03.jpg"
           alt="Image 03" />
       </li>
       <li class="vsqh01-1-slider_card">
         <img
-          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/examples/images/04.jpg"
+          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/04.jpg"
           alt="Image 04" />
       </li>
       <li class="vsqh01-1-slider_card">
         <img
-          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/examples/images/05.jpg"
+          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/05.jpg"
           alt="Image 05" />
       </li>
       <li class="vsqh01-1-slider_card">
         <img
-          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/examples/images/06.jpg"
+          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/06.jpg"
           alt="Image 06" />
       </li>
       <li class="vsqh01-1-slider_card">
         <img
-          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/examples/images/07.jpg"
+          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/07.jpg"
           alt="Image 07" />
       </li>
       <li class="vsqh01-1-slider_card">
         <img
-          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/examples/images/08.jpg"
+          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/08.jpg"
           alt="Image 08" />
       </li>
       <li class="vsqh01-1-slider_card">
         <img
-          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/examples/images/09.jpg"
+          data-src="https://cdn.jsdelivr.net/gh/quentinhocde/vsqh01@main/01/example/images/09.jpg"
           alt="Image 09" />
       </li>
     </ul>
