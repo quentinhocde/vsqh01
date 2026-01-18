@@ -33,7 +33,7 @@ The simplest way to integrate this effect:
 1. Import the **GSAP dependencies** (from CDN)
 2. Import the **minified script** (`vsqh01-1.min.js`)
 3. Add the **HTML structure**
-4. Done! ✨
+4. Enjoy! ✨
 
 > 💡 **CSS is automatically injected** by the script — no separate stylesheet needed.
 
@@ -92,7 +92,7 @@ You can customize the slider behavior using data attributes on the `vsqh01-1-sli
 <vsqh01-1-slider class="vsqh01-1-slider">
   <div class="vsqh01-1-slider_track">
     <!-- Slider Images (minimum 9 slides) -->
-    <!-- Use data-src for lazy loading, alt attribute is used as title -->
+    <!-- Use data-src for lazy loading -->
     <ul class="vsqh01-1-slider_list">
       <li class="vsqh01-1-slider_card">
         <img
@@ -215,7 +215,8 @@ If you customize the `spacing` value in the script, the minimum number of images
 | 0.40    | 5              |
 | 0.50    | 4              |
 
-> **Rule of thumb**: smaller spacing = more images needed, larger spacing = fewer images needed.
+> **Rule of thumb:** Smaller spacing = more images needed, larger spacing = fewer images needed.  
+> **Tip:** If you don't have enough unique images, you can simply duplicate your image HTML elements (e.g. `<li class="vsqh01-1-slider_card">` blocks) to reach the required number.
 
 ---
 
